@@ -1,2 +1,2 @@
 # ML_Projects
-Internship p
+Internship

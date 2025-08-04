@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .confidence {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Breast Cancer Prediction</h1>
+
+    <form action="/predict" method="POST">
+        <input type="text" name="mean_radius" placeholder="Mean Radius" required><br>
+        <input type="text" name="mean_texture" placeholder="Mean Texture" required><br>
+        <input type="text" name="mean_perimeter" placeholder="Mean Perimeter" required><br>
+        <input type="text" name="mean_smoothness" placeholder="Mean Smoothness" required><br>
+        <input type="text" name="mean_area" placeholder="Mean Area" required><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    <div class="result">
+        <p><strong>{{ output }}</strong></p>
+    </div>
+    <div class="confidence">
+        <p>{{ output_1 }}</p>
+
+</body>
+</html>

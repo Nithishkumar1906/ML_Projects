@@ -1,63 +1,5 @@
-<<<<<<< HEAD
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from flask import Flask, request, render_template
-import joblib
-
-app = Flask(__name__)
-model = joblib.load("model.pkl")
-
-
-# Route to load the homepage
-@app.route("/")
-def load_page():
-    return render_template('home.html', prediction=None)
-
-# Route to handle form submission and prediction
-@app.route("/predict", methods=["POST"])
-def predict():
-    mean_radius = float(request.form["mean_radius"])
-    mean_texture = float(request.form["mean_texture"])
-    mean_perimeter = float(request.form["mean_perimeter"])
-    mean_smoothness = float(request.form["mean_smoothness"])
-    mean_area = float(request.form["mean_area"])
-
-    features = ['mean_radius','mean_texture','mean_perimeter','mean_smoothness','mean_area']
-    data = [mean_radius, mean_texture, mean_perimeter, mean_smoothness, mean_area]
-    new_data = pd.DataFrame([data], columns=features)
-
-    single = model.predict(new_data)[0]
-    prob = model.predict_proba(new_data)[0]
-
-    if single == 1:
-        output = "The patient has breast cancer"
-    else:
-        output = "The patient does not have breast cancer"
-
-    output_1 = "Confidence levels: {:.2f}% (Benign), {:.2f}% (Malignant)".format(prob[0]*100, prob[1]*100)
-
-    return render_template('home.html',
-        output=output,
-        output_1=output_1,
-        mean_radius=mean_radius,
-        mean_texture=mean_texture,
-        mean_perimeter=mean_perimeter,
-        mean_smoothness=mean_smoothness,
-        mean_area=mean_area)
-
-
-app.run(debug=True)
-
-
-=======
-GEM_API_KEY="***REMOVED-GOOGLE-KEY***"
-
-import os,re
+import os, re
+from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 from flask import Flask, render_template, request, redirect
@@ -65,6 +7,8 @@ from PyPDF2 import PdfReader
 import google.generativeai as genai
 from langchain.text_splitter import CharacterTextSplitter
 
+load_dotenv()
+GEM_API_KEY = os.getenv("GEM_API_KEY")
 
 start_greeting = ["Hi","Hello"]
 end_greeting = ["bye! see you again"]
@@ -121,8 +65,8 @@ def get_text_chunks(text):
     """
     Splits the given text into smaller overlapping chunks for better processing.
 
-    Uses a character-based splitter that breaks the text into chunks of up to 
-    1000 characters, with an overlap of 200 characters between chunks. 
+    Uses a character-based splitter that breaks the text into chunks of up to
+    1000 characters, with an overlap of 200 characters between chunks.
     This helps preserve context in use cases like embedding, summarization, or QA.
 
     Args:
@@ -201,15 +145,15 @@ def process_documents():
 def chat():
     global vectorstore, conversation_chain, chat_history
     msgs = []
-    
+
     if request.method == 'POST':
         user_question = request.form['user_question']
-        
+
         answer = conversation_chain(user_question)
         chat_history.append(("User", user_question))
         chat_history.append(("Bot", answer))
 
-        
+
     return render_template('new_chat.html', chat_history=chat_history)
 
 @app.route('/pdf_chat', methods=['GET', 'POST'])
@@ -225,7 +169,7 @@ def essay_grading():
             rubric_text = request.form.get('essay_rubric')
 
             return render_template('new_essay_grad.html')
-        
+
         if len(request.files['file'].filename) > 0:
             pdf_file = request.files['file']
             text = extract_text_from_pdf(pdf_file)
@@ -233,10 +177,10 @@ def essay_grading():
         else:
             text = request.form.get('essay_text')
             result = _grade_essay(text)
-    
+
     return render_template('new_essay_grad.html', result=result, input_text=text)
 
-    
+
 @app.route('/essay_rubric', methods=['GET', 'POST'])
 def essay_rubric():
     return render_template('new_essay.html')
@@ -249,6 +193,5 @@ def extract_text_from_pdf(pdf_file):
     return text
 
 if __name__ == '__main__':
-    print("✅ Flask app is starting...")
+    print("Flask app is starting...")
     app.run(debug=True)
->>>>>>> 6dfe028 (Initial commit of project files)

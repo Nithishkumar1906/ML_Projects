@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 import os
 import re
+from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 import PyPDF2
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -8,8 +9,9 @@ from langchain.vectorstores import FAISS
 from langchain.text_splitter import CharacterTextSplitter
 import google.generativeai as genai
 
-# ✅ Gemini API Key Configuration
-genai.configure(api_key="***REMOVED-GOOGLE-KEY***")
+# Gemini API Key Configuration
+load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 gemini_model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 app = Flask(__name__)

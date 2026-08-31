@@ -50,6 +50,7 @@ def predict():
         mean_area=mean_area)
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
 
 

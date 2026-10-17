@@ -33,12 +33,15 @@ def predict():
     single = model.predict(new_data)[0]
     prob = model.predict_proba(new_data)[0]
 
-    if single == 1:
-        output = "The patient has breast cancer"
+    # Label encoding in Breast_cancer_data.csv: 0 = malignant, 1 = benign
+    # (212 malignant / 357 benign, matching the original WDBC dataset).
+    # model.classes_ is [0 1], so prob[0] is malignant and prob[1] is benign.
+    if single == 0:
+        output = "The patient has breast cancer (malignant)"
     else:
-        output = "The patient does not have breast cancer"
+        output = "The patient does not have breast cancer (benign)"
 
-    output_1 = "Confidence levels: {:.2f}% (Benign), {:.2f}% (Malignant)".format(prob[0]*100, prob[1]*100)
+    output_1 = "Confidence levels: {:.2f}% (Malignant), {:.2f}% (Benign)".format(prob[0]*100, prob[1]*100)
 
     return render_template('home.html',
         output=output,

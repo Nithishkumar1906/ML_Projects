@@ -42,3 +42,7 @@ A broader benchmark on the same dataset, adding classical ML (TF-IDF + Logistic 
 **Key learning:** in this setup, simpler sequence models (LSTM/GRU) outperformed a fine-tuned DistilBERT — likely due to the much smaller fine-tuning sample (50K vs. ~1M+ for the other models) and only 2 training epochs.
 
 **Note:** both notebooks load `training.1600000.processed.noemoticon.csv` (Sentiment140) from a Colab path — the dataset is not included in this repo.
+
+---
+
+<sub>[Back to portfolio](../README.md) · [GitHub](https://github.com/Nithishkumar1906) · [LinkedIn](https://www.linkedin.com/in/nithish-kumar-m-s-04500626a)</sub>

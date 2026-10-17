@@ -19,4 +19,21 @@ Chain composition (LCEL/Runnables), output parsing, document loading/chunking, e
 
 Most notebooks call an LLM via Groq's OpenAI-compatible endpoint (`llama3-70b-8192`).
 
-**⚠️ Security note:** several notebooks in this folder (`lcel-basics`, `langgraph-basics`, `langchain-chat-model-basics`, `langgraph-long-term-memory`, `langchain-output-parsers`, `pdf-docx-loading-splitting`, `lcel-chained-pipelines`, `langgraph-short-term-memory`) hardcode a Groq API key directly in a code cell. This key is already committed to Git history — rotate/revoke it and switch to `python-dotenv` + a `.env` file before treating this repo as public.
+**Credentials:** these notebooks previously hardcoded a live Groq API key in a code cell. All nine now
+load credentials through `python-dotenv` instead:
+
+```python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+assert os.environ.get("OPENAI_API_KEY"), "Missing OPENAI_API_KEY - add it to your .env file"
+```
+
+Copy [`.env.example`](../.env.example) to `.env` at the repository root and set `OPENAI_API_KEY` to your
+Groq key (Groq exposes an OpenAI-compatible endpoint). **The previously committed key is still present in
+this repository's Git history and should be revoked.**
+
+---
+
+<sub>[Back to portfolio](../README.md) · [GitHub](https://github.com/Nithishkumar1906) · [LinkedIn](https://www.linkedin.com/in/nithish-kumar-m-s-04500626a)</sub>

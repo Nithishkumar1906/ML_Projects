@@ -1,19 +1,58 @@
-# Python
+# ---- Python ----
 __pycache__/
 *.py[cod]
 *.egg-info/
+build/
+dist/
 
-# Jupyter
+# ---- Jupyter ----
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/
 
-# Environments
+# ---- Environments & secrets ----
 .env
+.env.*
+!.env.example
+*.key
+credentials.json
+service-account*.json
 .venv/
 venv/
 env/
+ENV/
 
-# OS / editor
+# ---- Vector stores / generated indexes ----
+vector_index/
+faiss_index/
+*.faiss
+chroma_db/
+*.sqlite
+*.sqlite3
+*.db
+
+# ---- Runtime uploads & extracted text ----
+projects/*/uploads/*
+!projects/*/uploads/.gitkeep
+projects/*/__data__/*.txt
+
+# ---- Datasets & large artifacts (keep small committed samples explicitly) ----
+*.wav
+*.mp3
+*.zip
+*.tar.gz
+!projects/cancer-prediction-app/Breast_cancer_data.csv
+
+# ---- Model checkpoints (model.pkl is intentionally committed) ----
+*.h5
+*.keras
+*.pt
+*.pth
+*.onnx
+
+# ---- OS / editor ----
 .DS_Store
 Thumbs.db
+desktop.ini
 .vscode/
 .idea/
+*.swp

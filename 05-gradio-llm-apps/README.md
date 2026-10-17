@@ -11,3 +11,7 @@ Interactive AI apps built with Gradio, Gemini, and web scraping: streaming chatb
 | [web-scraping-brochure-generator.ipynb](./web-scraping-brochure-generator.ipynb) | Scrapes a company site, uses Gemini (JSON mode) to pick relevant sub-pages, then streams a generated brochure | Structured LLM output, multi-step scraping pipeline |
 
 **Note:** `gradio-flight-assistant-tool-calling.ipynb` and `web-summarization-gemini.ipynb` contain unfinished/buggy sections (a mismatched tool function name in the former; a summarizer that ignores the scraped content in the latter) — kept as-is since they're learning exercises, not the final version of that idea (see `06-applied-genai-nlp` for the more complete flight-assistant iteration).
+
+---
+
+<sub>[Back to portfolio](../README.md) · [GitHub](https://github.com/Nithishkumar1906) · [LinkedIn](https://www.linkedin.com/in/nithish-kumar-m-s-04500626a)</sub>

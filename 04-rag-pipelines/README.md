@@ -11,4 +11,13 @@ A progression of Retrieval-Augmented Generation pipelines over the same source P
 
 **Note:** `model-training.ipynb`, previously a stray, unrelated classical-ML notebook in this folder (a breast-cancer classifier), has been moved to [`projects/cancer-prediction-app/`](../projects/cancer-prediction-app/) — it's the training notebook behind that app's `model.pkl`, not part of the RAG progression.
 
-**⚠️ Security note:** `rag-basic-pdf-qa.ipynb`, `rag-pinecone-vector-store.ipynb`, and `rag-evaluation-ragas-bleu-rouge.ipynb` hardcode API keys (Google, Pinecone, Groq) directly in code cells. These are already committed to Git history — rotate/revoke them and switch to `python-dotenv` before treating this repo as public.
+**Credentials:** `rag-basic-pdf-qa.ipynb`, `rag-pinecone-vector-store.ipynb` and
+`rag-evaluation-ragas-bleu-rouge.ipynb` previously hardcoded live Google, Pinecone and Groq keys in code
+cells. All three now read them from the environment via `python-dotenv` - copy
+[`.env.example`](../.env.example) to `.env` and fill in `GOOGLE_API_KEY`, `PINECONE_API_KEY` and
+`GROQ_API_KEY`. **The previously committed keys remain in this repository's Git history and should be
+revoked.**
+
+---
+
+<sub>[Back to portfolio](../README.md) · [GitHub](https://github.com/Nithishkumar1906) · [LinkedIn](https://www.linkedin.com/in/nithish-kumar-m-s-04500626a)</sub>

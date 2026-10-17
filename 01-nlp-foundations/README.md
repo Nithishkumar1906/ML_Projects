@@ -13,3 +13,7 @@ Classical and transformer-based NLP: text preprocessing, POS/NER tagging, lexico
 | [huggingface-transformers-pipeline.ipynb](./huggingface-transformers-pipeline.ipynb) | Tour of HuggingFace `pipeline()` (sentiment, NER, zero-shot) plus manual tokenizer/model usage | Transformers pipelines, zero-shot classification |
 
 **Note:** several notebooks load local CSVs (`TA_restaurants_curated.csv`, `Fake_or_Real.csv`, `Book_reviews.csv`, `bbc_news.csv`) that are not committed to this repo — supply your own copy to re-run those cells.
+
+---
+
+<sub>[Back to portfolio](../README.md) · [GitHub](https://github.com/Nithishkumar1906) · [LinkedIn](https://www.linkedin.com/in/nithish-kumar-m-s-04500626a)</sub>
